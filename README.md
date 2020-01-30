@@ -56,7 +56,7 @@ CONFIGRATION
 	- keep your accountSid and authToken in twilio_credentials file
 4. WEBPUSH
 	//Installl web push module
-	npm install web-push --save
+	(npm install web-push --save)
 
 	//Generate VAPID keys by console
 	cd ./node_modules/.bin/web-push generate-vapid-keys
@@ -142,11 +142,11 @@ PARAMETERS :
 	        	  "email_type":"basic",	
 	              "html_content": "<p>Example HTML FINAL</p>",
 	              "text_content":"",
-	              "subject":"child bimquote testing",
-	              "from_email":"tjd@bimquote.com",
-	              "from_name":"tjd",
-	              "to_email":"ypooja@teqmavens.com",
-	              "to_name":"pooja"
+	              "subject":"child  testing",
+	              "from_email":"test@test.com",
+	              "from_name":"sender",
+	              "to_email":"test@teqmavens.com",
+	              "to_name":"receiver"
 	        },
 	        {
 	        	  "email_type":"template",	
@@ -155,10 +155,10 @@ PARAMETERS :
 	              "html_content": "<p>Example HTML</p>",
 	              "text_content":"",
 	              "subject":"wow! template attached",
-	              "from_email":"tjd@bimquote.com",
-	              "from_name":"tjd",
-	              "to_email":"kjasvinder@teqmavens.com",
-	              "to_name":"jasvinder"
+	              "from_email":"test@test.com",
+	              "from_name":"test",
+	              "to_email":"test@teqmavens.com",
+	              "to_name":"receiver"
 	        }]
 	    },
 	    {
@@ -167,7 +167,7 @@ PARAMETERS :
 	        "push_subtype":"twilio",
 	        "push_body":[{		        	  
 	              "to_country_code": "91",
-	              "to_number":"7837136128",
+	              "to_number":"9874563210",
 	              "from_country_code":"1",
 	              "from_number":"5005550006",
 	              "message":"this is child test message"
@@ -180,7 +180,7 @@ PARAMETERS :
 	        "push_subtype":"twilio",
 	        "push_body":[{		        	  
 	              "to_country_code": "91",
-	              "to_number":"8284996718",
+	              "to_number":"7896541230",
 	              "from_country_code":"1",
 	              "from_number":"5005550006",
 	              "message":"this is child test message"
@@ -212,11 +212,11 @@ PARAMETERS :
 	        "push_type":"email",
 	        "push_subtype":"sendgrid",
 	        "push_body":[{
-	              "html_content": "<h1>it works ...and easy to do anywhere, even with Node.js</h1>",
+	              "html_content": "<p>and easy to do anywhere, even with Node.js</p>",
 	              "text_content":"and easy to do anywhere, even with Node.js",
 	              "subject":"Sending email with Twilio SendGrid is Fun testing....",
-	              "from_email":"kgaurav@teqmavens.com",
-	              "to_email":"ypooja@teqmavens.com",
+	              "from_email":"test@teqmavens.com",
+	              "to_email":"test2@teqmavens.com",
 	        }]
 	    },
 	];
