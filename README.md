@@ -1,6 +1,6 @@
 DATABASE :
 
-## create these tables database
+## create these tables in database
 -- --------------------------------------------------------
 
 --
