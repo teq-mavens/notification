@@ -48,7 +48,7 @@ module.exports = (express, connection) => {
 	 *-- Date - 15th jan 2020
 	 *-- Function : Node post api - send push notifications on the bases of there type
 	 *-->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
-	router.get('/send', (req, res) => {
+	router.post('/send', (req, res) => {
 		console.log('-----------in notification send api-----------');
 		var pushdata = req.body.pushdata === '' || req.body.pushdata === undefined ? '' : req.body.pushdata;
 		var response_arr = []; /*-- final response array --*/
