@@ -1,0 +1,99 @@
+/*-- ----------------------------------------------------------------------------------------------------
+ *-- INSTALLATION DOCUMENT
+ *-- ---------------------------------------------------------------------------------------------------*/
+
+
+Prerequisites :
+
+We assumes that you are using Ubuntu 18.04. Before you begin, you should have a non-root user account with sudo privileges set up on your system. You should also have terminal and text editor in your system.
+
+-- ---------------------------------------------------------------------------------------------------
+
+Installation :
+
+Install the Distro-Stable Version for Ubuntu
+----------------------------------------------
+Step 1 – Update apt get
+
+	sudo apt-get update
+
+Step 2 – Install Node.js
+	
+	sudo apt-get install nodejs
+
+Step 3 – Install npm
+	
+	sudo apt-get install npm
+
+Step 4 – Check Node.js and NPM Version
+
+	node -v 
+(and) 
+	npm -v
+
+Step 5 – Run npm init command to create package.json file
+	
+	sudo npm init
+
+Step 6 – Install all the required modules 
+	
+	sudo npm install body-parser
+	sudo npm install express
+	sudo npm install path
+	sudo npm install mysql
+	sudo npm install web-push
+	sudo npm install node-schedule
+	sudo npm install twilio
+	sudo npm install mandrill-api
+
+-- ---------------------------------------------------------------------------------------------------
+
+Configration :
+
+Step 1. Configure your DATABASE connection 
+
+	- mention your host, username , password and database name in db_credentials.js.
+
+2. Configure your MANDRILL connection
+
+	- mention your api key in mandrill_credentials file
+
+3. Configure your TWILIO connection 
+
+	- mention  your accountSid and authToken in twilio_credentials file
+
+4. Configure your WEBPUSH connection
+	
+	- Generate publicVapidKey and privateVapidKey from terminal 
+	- keep public and private key in webpush_credentials file
+	- give public key in public/main.js file
+
+(Note: To generate publicVapidKey and privateVapidKey make sure you installed web-push module then run below command :
+	
+	cd ./node_modules/.bin/web-push generate-vapid-keys
+)
+
+5. Set DEFAULT notification 
+	- Mention default category, type and subtype
+
+6. Configure your SENDGRID connection
+
+	- mention your api key in sendgrid_credentials file
+
+-- ---------------------------------------------------------------------------------------------------
+
+Once you finish above mentioned step , you are ready to start your project .Run npm start command :
+
+	sudo npm start
+
+-- ---------------------------------------------------------------------------------------------------
+
+Currently this project is running on 7000 port number but you can change and set any port number for your project.
+Accordingly your api url will change like :
+
+URL : BASE_URL:<YOUR_PORT_NUMBER>/notification/send
+
+-- ---------------------------------------------------------------------------------------------------
+
+
+

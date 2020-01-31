@@ -1,0 +1,181 @@
+/*-- ----------------------------------------------------------------------------------------------------
+ *-- API DOCUMENT
+ *-- ---------------------------------------------------------------------------------------------------*/
+
+1.SEND NOTIFICATION 
+
+URL : BASE_URL:7000/notification/send
+METHOD : POST
+PARAMETERS :	
+		- pushdata 		<REQUIRED> 	-	(json array)
+
+-- ------------------------------------------------------------------------------------------------------
+PARAMETERS OF JSON ARRAY :
+
+- push_category				-	"<String>"
+- push_type					-	"<String>"
+- push_subtype				-	"<String>"
+- push_body					-	"<json array>"
+
+Parameters of json array for push body
+=============================================
+MANDRILL BODY PARAMETERS:
+- email_type				-	"<String>"
+- html_content				-	"<String>"
+- text_content				-	"<String>"
+- subject		(REQUIRED)	-	"<String>"
+- from_email	(REQUIRED)	-	"<email>"
+- from_name					-	"<String>"
+- to_email		(REQUIRED)	-	"<Email>"
+- to_name					-	"<String>"
+
+- schedule_time (REQUIRED) (* IN CASE OF SCHEDULE CATEGORY )
+============================================
+SENDGRID BODY PARAMETERS:
+- html_content		(REQUIRED)	-	"<String>"
+- text_content		(REQUIRED)	-	"<String>"
+- subject			(REQUIRED)	-	"<String>"
+- from_email		(REQUIRED)	-	"<email>"
+- to_email			(REQUIRED)	-	"<email>"
+
+- schedule_time (REQUIRED) (* IN CASE OF SCHEDULE CATEGORY )
+===========================================
+TWILIO BODY PARAMETERS:
+- to_country_code		(REQUIRED)	-	"<integer>"
+- to_number				(REQUIRED)	-	"<integer>"
+- from_country_code 	(REQUIRED)	-	"<integer>"
+- from_number			(REQUIRED)	-	"<integer>"
+- message				(REQUIRED)	-	"<String>"
+
+- schedule_time (REQUIRED) (* IN CASE OF SCHEDULE CATEGORY )
+===========================================
+BASIC WEBPUSH BODY PARAMETERS:
+- html_title		(REQUIRED)	-	"<String>"
+- html_body			(REQUIRED)	-	"<String>"
+- user_id			(REQUIRED)	-	"<integer>"
+
+- schedule_time (REQUIRED) (* IN CASE OF SCHEDULE CATEGORY )
+===========================================
+ADVANCE WEBPUSH BODY PARAMETERS:
+- html_title		(REQUIRED)	-	"<String>"
+- html_body			(REQUIRED)	-	"<String>"
+- user_id			(REQUIRED)	- 	"<integer>"
+- icon_url 			(REQUIRED)	- 	"<URL String>"
+- badge_url 		(REQUIRED)	-	"<URL String>"
+- image_url 					- 	"<URL String>"
+- vibrate						- 	"<Array of Integers>"
+- sound_url						- 	"<URL String>"
+- dir							- 	"<String of 'auto' | 'ltr' | 'rtl'>"	
+- actions						- 	"<Array of Strings>"
+
+- schedule_time (REQUIRED) (* IN CASE OF SCHEDULE CATEGORY )
+-- --------------------------------------------------------------------------------------------------------
+
+(ex:	   
+	pushdata 	= [
+		{
+	        "push_category":"onetime",
+	        "push_type":"email",
+	        "push_subtype":"mandrill",
+	        "push_body":[{
+	        	  "email_type":"basic",	
+	              "html_content": "<p>Example HTML FINAL</p>",
+	              "text_content":"",
+	              "subject":"child testing",
+	              "from_email":"sender@test.com",
+	              "from_name":"sender",
+	              "to_email":"test@teqmavens.com",
+	              "to_name":"receiver"
+	        },
+	        {
+	        	  "email_type":"template",	
+	        	  "template_name_text":"",
+	        	  "template_content_text":"Send Invitation",
+	              "html_content": "<p>Example HTML</p>",
+	              "text_content":"",
+	              "subject":"wow! template attached",
+	              "from_email":"test@test.com",
+	              "from_name":"sender",
+	              "to_email":"test@teqmavens.com",
+	              "to_name":"receiver"
+	        }]
+	    },
+	    {
+	    	"push_category":"onetime",
+	        "push_type":"sms",
+	        "push_subtype":"twilio",
+	        "push_body":[{		        	  
+	              "to_country_code": "91",
+	              "to_number":"9874563210",
+	              "from_country_code":"1",
+	              "from_number":"5005550006",
+	              "message":"this is child test message"
+	        }]
+	    },
+	    {
+	    	"push_category":"onetime",
+	        "push_subcategory":"",
+	        "push_type":"sms",
+	        "push_subtype":"twilio",
+	        "push_body":[{		        	  
+	              "to_country_code": "91",
+	              "to_number":"7896541230",
+	              "from_country_code":"1",
+	              "from_number":"5005550006",
+	              "message":"this is child test message"
+	        }]
+	    },
+		{
+	    	"push_category":"onetime",
+	        "push_type":"webpush",
+	        "push_subtype":"basic",
+	        "push_body":[{		  
+	              "user_id": "4",
+	              "html_title":"basic title",
+	              "html_body":"basic onetime body"
+	        }]
+	    },
+	    {
+	    	"push_category":"schedule",
+	        "push_type":"webpush",
+	        "push_subtype":"basic",
+	        "push_body":[{		  
+	              "schedule_time":"*/30 * * * * *",
+	              "user_id": "4",
+	              "html_title":"Notification engine",
+	              "html_body":"YOU FINALLY DID IT,, girl ....."
+	        }]
+	    },
+		{
+	        "push_category":"onetime",
+	        "push_type":"email",
+	        "push_subtype":"sendgrid",
+	        "push_body":[{
+	              "html_content": "<h1>and easy to do anywhere, even with Node.js</h1>",
+	              "text_content":"and easy to do anywhere, even with Node.js",
+	              "subject":"Sending email with Twilio SendGrid is Fun testing....",
+	              "from_email":"test1@teqmavens.com",
+	              "to_email":"test2@teqmavens.com",
+	        }]
+	    },
+	];
+)
+-- ===================================================================================================
+
+2.CANCEL PUSH NOTIFICATION 
+------------------------------------------
+URL : BASE_URL:7000/notification/cancel_schedule
+METHOD : POST
+PARAMETERS :	
+		- reference_key 	(REQUIRED)	-	"<String>"
+
+-- ===================================================================================================
+
+3.CHECK PUSH STATUS 
+------------------------------------------
+URL : BASE_URL:7000/notification/check_status
+METHOD : POST
+PARAMETERS : 
+		- reference_key 	(REQUIRED)	-	"<String>" 
+
+-- ===================================================================================================
