@@ -45,6 +45,7 @@ Step 6 – Install all the required modules
 	sudo npm install node-schedule
 	sudo npm install twilio
 	sudo npm install mandrill-api
+	sudo npm install @sendgrid/mail
 
 -- ---------------------------------------------------------------------------------------------------
 
