@@ -21,20 +21,20 @@ Step 2 – Install Node.js
 	
 	sudo apt-get install nodejs
 
-Step 3 – Install npm
-	
-	sudo apt-get install npm
-
-Step 4 – Check Node.js and NPM Version
+Step 3 – Check Node.js and NPM Version
 
 	node -v 
 (and) 
 	npm -v
 
-Step 5 – Run npm init command to create package.json file
+Step 4 – Run npm init command to create package.json file (note : this command will create package.json file)
 	
 	sudo npm init
-
+	
+Step 5 – Install npm  (note : this command will create package-lock.json file)
+	
+	sudo npm install  
+	
 Step 6 – Install all the required modules 
 	
 	sudo npm install body-parser
@@ -70,10 +70,11 @@ Step 1. Configure your DATABASE connection
 
 (Note: To generate publicVapidKey and privateVapidKey make sure you installed web-push module then run below command :
 	
-	cd ./node_modules/.bin/web-push generate-vapid-keys
+	./node_modules/.bin/web-push generate-vapid-keys
 )
 
 5. Set DEFAULT notification 
+
 	- Mention default category, type and subtype
 
 6. Configure your SENDGRID connection
