@@ -7,7 +7,7 @@
 URL : BASE_URL:7000/notification/send
 METHOD : POST
 PARAMETERS :	
-		- pushdata 		<REQUIRED> 	-	(json array)
+	- (json array) - <REQUIRED>	
 
 -- ------------------------------------------------------------------------------------------------------
 PARAMETERS OF JSON ARRAY :
@@ -30,6 +30,21 @@ MANDRILL BODY PARAMETERS:
 - to_name					-	"<String>"
 
 - schedule_time (REQUIRED) (* IN CASE OF SCHEDULE CATEGORY )
+=============================================
+MANDRILL BODY (WITH TEMPLATE) PARAMETERS:
+- email_type				-	"<String>"
+- html_content				-	"<String>"
+- text_content				-	"<String>"
+- template_name_text		-	"<String>"
+- template_content_text		-	"<JSON ARRAY>"
+- subject		(REQUIRED)	-	"<String>"
+- from_email	(REQUIRED)	-	"<email>"
+- from_name					-	"<String>"
+- to_email		(REQUIRED)	-	"<Email>"
+- to_name					-	"<String>"
+
+- schedule_time (REQUIRED) (* IN CASE OF SCHEDULE CATEGORY )
+============================================
 ============================================
 SENDGRID BODY PARAMETERS:
 - html_content		(REQUIRED)	-	"<String>"
