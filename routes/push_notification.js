@@ -45,7 +45,9 @@ module.exports = (express, connection) => {
 	 *-->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
 	router.post('/send', (req, res) => {
 		console.log('-----------in notification send api-----------');
-		var pushdata = req.body.pushdata === '' || req.body.pushdata === undefined ? '' : req.body.pushdata;
+		console.log('---- got the data req.body -------'+JSON.stringify(req.body)); 
+		var pushdata = req.body === '' || req.body === undefined ? '' : req.body;	
+		console.log('---- got the data -------'+pushdata); 
 		var response_arr = []; /*-- final response array --*/
 		var data = {
 			'body': ""
