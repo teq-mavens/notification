@@ -11,12 +11,7 @@ module.exports = (express, connection) => {
 	// >>>>>>>>>> sendgrid configration file
 	var sendgrid_credentials = require('../config/sendgrid_credentials');
 	// >>>>>>>>>> sms configration file 
-	var twilio_credentials = require('../config/twilio_credentials');
-	var accountSid = twilio_credentials.accountSid;
-	var authToken = twilio_credentials.authToken;
-	var twilio = require('twilio');
-	var client = new twilio(accountSid, authToken);
-	var MessagingResponse = require('twilio').twiml.MessagingResponse;
+	var twilio_credentials = require('../config/twilio_credentials');	
 	// >>>>>>>>>> web push schedule
 	var schedule = require('node-schedule');
 	// >>>>>>>>>> child process
@@ -247,6 +242,10 @@ module.exports = (express, connection) => {
 								var subtype = (pushdata[i].push_subtype) ? pushdata[i].push_subtype : DEFAULT_PARAM.DEFAULT_SMS_SUBTYPE;
 								/*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> TWILIO SUBTYPE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
 								if (subtype == CONST_PARAM.TWILIO) {
+									
+									var accountSid = twilio_credentials.accountSid;
+									var authToken = twilio_credentials.authToken;
+									
 									var sms_body = (pushdata[i].push_body) ? pushdata[i].push_body : '';
 									for (var k = 0; k < sms_body.length; k++) {
 										var to_country_code = sms_body[k].to_country_code === '' || sms_body[k].to_country_code === undefined ? '' : sms_body[k].to_country_code;
@@ -684,6 +683,10 @@ module.exports = (express, connection) => {
 								var subtype = (pushdata[i].push_subtype) ? pushdata[i].push_subtype : DEFAULT_PARAM.DEFAULT_SMS_SUBTYPE;
 								/*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> TWILIO SUBTYPE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
 								if (subtype == CONST_PARAM.TWILIO) {
+									
+									var accountSid = twilio_credentials.accountSid;
+									var authToken = twilio_credentials.authToken;
+									
 									var skd_sms_body = (pushdata[i].push_body) ? pushdata[i].push_body : '';
 									for (var sk = 0; sk < skd_sms_body.length; sk++) {
 										var to_country_code = skd_sms_body[sk].to_country_code === '' || skd_sms_body[sk].to_country_code === undefined ? '' : skd_sms_body[sk].to_country_code;
