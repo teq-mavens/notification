@@ -1,0 +1,141 @@
+<?php            
+      $pushdata = array (
+                0 => 
+                array (
+                  'push_category' => 'onetime',
+                  'push_type' => 'email',
+                  'push_subtype' => 'mandrill',
+                  'push_body' => 
+                  array (
+                    0 => 
+                    array (
+                      'email_type' => 'basic',
+                      'html_content' => '<p>Example HTML FINAL</p>',
+                      'text_content' => '',
+                      'subject' => 'child bimquote testing',
+                      'from_email' => 'tjd@bimquote.com',
+                      'from_name' => 'tjd',
+                      'to_email' => 'ypooja@teqmavens.com',
+                      'to_name' => 'pooja',
+                    ),
+                    1 => 
+                    array (
+                      'email_type' => 'template',
+                      'template_name_text' => '',
+                      'template_content_text' => 'Send Invitation',
+                      'html_content' => '<p>Example HTML</p>',
+                      'text_content' => '',
+                      'subject' => 'wow! template attached',
+                      'from_email' => 'tjd@bimquote.com',
+                      'from_name' => 'tjd',
+                      'to_email' => 'kjasvinder@teqmavens.com',
+                      'to_name' => 'jasvinder',
+                    ),
+                  ),
+                ),
+                1 => 
+                array (
+                  'push_category' => 'onetime',
+                  'push_type' => 'sms',
+                  'push_subtype' => 'twilio',
+                  'push_body' => 
+                  array (
+                    0 => 
+                    array (
+                      'to_country_code' => '91',
+                      'to_number' => '7837136128',
+                      'from_country_code' => '1',
+                      'from_number' => '5005550006',
+                      'message' => 'this is child test message',
+                    ),
+                  ),
+                ),
+                2 => 
+                array (
+                  'push_category' => 'onetime',
+                  'push_subcategory' => '',
+                  'push_type' => 'sms',
+                  'push_subtype' => 'twilio',
+                  'push_body' => 
+                  array (
+                    0 => 
+                    array (
+                      'to_country_code' => '91',
+                      'to_number' => '8284996718',
+                      'from_country_code' => '1',
+                      'from_number' => '5005550006',
+                      'message' => 'this is child test message',
+                    ),
+                  ),
+                ),
+                3 => 
+                array (
+                  'push_category' => 'onetime',
+                  'push_type' => 'webpush',
+                  'push_subtype' => 'basic',
+                  'push_body' => 
+                  array (
+                    0 => 
+                    array (
+                      'user_id' => '4',
+                      'html_title' => 'basic title',
+                      'html_body' => 'basic onetime body',
+                    ),
+                  ),
+                ),
+                4 => 
+                array (
+                  'push_category' => 'schedule',
+                  'push_type' => 'webpush',
+                  'push_subtype' => 'basic',
+                  'push_body' => 
+                  array (
+                    0 => 
+                    array (
+                      'schedule_time' => '*/30 * * * * *',
+                      'user_id' => '4',
+                      'html_title' => 'Notification engine',
+                      'html_body' => 'YOU FINALLY DID IT,, girl .....',
+                    ),
+                  ),
+                ),
+                5 => 
+                array (
+                  'push_category' => 'onetime',
+                  'push_type' => 'email',
+                  'push_subtype' => 'sendgrid',
+                  'push_body' => 
+                  array (
+                    0 => 
+                    array (
+                      'html_content' => 'it works ...and easy to do anywhere, even with Node.js',
+                      'text_content' => 'and easy to do anywhere, even with Node.js',
+                      'subject' => 'Sending email with Twilio SendGrid is Fun testing....',
+                      'from_email' => 'kgaurav@teqmavens.com',
+                      'to_email' => 'ypooja@teqmavens.com',
+                    ),
+                  ),
+                ),
+              );
+      //print_r($pushdata); die();
+      $pushdata_str = json_encode($data);
+       
+      // Prepare new cURL resource
+      $ch = curl_init('http://localhost:7000/notification/send');
+      curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+      curl_setopt($ch, CURLINFO_HEADER_OUT, true);
+      curl_setopt($ch, CURLOPT_POST, true);
+      curl_setopt($ch, CURLOPT_POSTFIELDS, $pushdata_str);
+       
+      // Set HTTP Header for POST request 
+      curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+          'Content-Type: application/json',
+          'Content-Length: ' . strlen($pushdata_str))
+      );
+       
+      // Submit the POST request
+      $result = curl_exec($ch);           //echo '<pre/>';print_r($result); die();
+      // Close cURL session handle
+      curl_close($ch);
+
+?>
