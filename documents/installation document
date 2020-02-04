@@ -31,7 +31,7 @@ Step 4 – Run npm init command to create package.json file (note : this command
 	
 	sudo npm init
 	
-Step 5 – Install npm  (note : this command will create package-lock.json file)
+Step 5 – Install npm  (note : in case package-lock.json file is not create ,this command will create package-lock.json file)
 	
 	sudo npm install  
 	
