@@ -170,9 +170,9 @@ ADVANCE WEBPUSH BODY PARAMETERS:
 	              "text_content":"and easy to do anywhere, even with Node.js",
 	              "subject":"Sending email with Twilio SendGrid is Fun testing....",
 	              "from_email":"test1@teqmavens.com",
-	              "to_email":"test2@teqmavens.com",
+	              "to_email":"test2@teqmavens.com"
 	        }]
-	    },
+	    }
 	];
 )
 -- ===================================================================================================
