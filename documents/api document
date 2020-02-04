@@ -87,7 +87,7 @@ ADVANCE WEBPUSH BODY PARAMETERS:
 -- --------------------------------------------------------------------------------------------------------
 
 (ex:	   
-	pushdata 	= [
+	[
 		{
 	        "push_category":"onetime",
 	        "push_type":"email",
