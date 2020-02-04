@@ -77,7 +77,7 @@ process.on('message', function (m) {
 		});
 	} catch (ex) {
 		let sql = 'INSERT INTO `push_logs`(`push_type`, `reference_key`, `status`, `json_respone`) VALUES (?,?,?,?)';
-		let params = [m.push_type, m.reference_key, 'error', ex];
+		let params = [m.push_type, m.reference_key, 'error', ''+ex+''];
 		connection.query(sql, params, (err, rows, fields) => {
 			if (err) {
 				throw err;
