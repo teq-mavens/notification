@@ -32,7 +32,7 @@ Step 4 – Run npm init command to create package.json file (note : this command
 	sudo npm init	
 	
 Step 5 – Install all the required modules 
-	(note : in case package-lock.json file is not create ,this command will create package-lock.json file)
+	(note : in case package-lock.json file is not create ,these command will create package-lock.json file)
 	
 	sudo npm install body-parser
 	sudo npm install express
