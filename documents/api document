@@ -10,6 +10,7 @@ PARAMETERS :
 	- subscription			- <REQUIRED>
 	- user_id				- <REQUIRED>
 
+*(purpose : api to insert your subscription endpoint in database subscription table. )
 -- ------------------------------------------------------------------------------------------------------
 
 2.SEND NOTIFICATION 
@@ -18,7 +19,7 @@ URL : BASE_URL:7000/notification/send
 METHOD : POST
 PARAMETERS :	
 	- (json array) - <REQUIRED>	
-
+*(purpose : api to send all your notification, in response you receiver a reference key and status code )
 -- ------------------------------------------------------------------------------------------------------
 PARAMETERS OF JSON ARRAY :
 
@@ -193,7 +194,8 @@ URL : BASE_URL:7000/notification/cancel_schedule
 METHOD : POST
 PARAMETERS :	
 		- reference_key 	(REQUIRED)	-	"<String>"
-
+		
+*(purpose : api to cancel scheduled notification )
 -- ===================================================================================================
 
 4.CHECK PUSH STATUS 
@@ -202,5 +204,6 @@ URL : BASE_URL:7000/notification/check_status
 METHOD : POST
 PARAMETERS : 
 		- reference_key 	(REQUIRED)	-	"<String>" 
-
+		
+*(purpose : api to check status of notification )
 -- ===================================================================================================
