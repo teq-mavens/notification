@@ -64,7 +64,7 @@ Step 3. Configure your TWILIO connection to use twilio
 
 	- mention  your accountSid and authToken in twilio_credentials file
 
-Step 4. Configure your WEBPUSH connection to use service worker 
+Step 4. Configure your WEBPUSH connection
 	
 	- Generate publicVapidKey and privateVapidKey from terminal using below command :
 

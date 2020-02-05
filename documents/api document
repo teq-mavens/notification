@@ -187,7 +187,7 @@ ADVANCE WEBPUSH BODY PARAMETERS:
 )
 -- ===================================================================================================
 
-2.CANCEL PUSH NOTIFICATION 
+3.CANCEL PUSH NOTIFICATION 
 ------------------------------------------
 URL : BASE_URL:7000/notification/cancel_schedule
 METHOD : POST
@@ -196,7 +196,7 @@ PARAMETERS :
 
 -- ===================================================================================================
 
-3.CHECK PUSH STATUS 
+4.CHECK PUSH STATUS 
 ------------------------------------------
 URL : BASE_URL:7000/notification/check_status
 METHOD : POST
