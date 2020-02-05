@@ -11,39 +11,43 @@ We assumes that you are using Ubuntu 18.04. Before you begin, you should have a 
 
 Installation :
 
+(Note : Make sure you clone this package into your project then change directory to notification folder in terminal
+		and began installation.In case latest version of nodejs is already installed in your system you can skip first three steps.)  
+
 Install the Distro-Stable Version for Ubuntu
 ----------------------------------------------
-Step 1 – Update apt get
+Step 1 – To Update apt get :
 
-	sudo apt-get update
+	$ sudo apt-get update
 
-Step 2 – Install Node.js
+Step 2 – To Install Node.js :
 	
-	sudo apt-get install nodejs
+	$ sudo apt-get install nodejs
 
-Step 3 – Check Node.js and NPM Version
+Step 3 – To Check Node.js and NPM Version :
 
-	node -v 
+	$ node -v 
 (and) 
-	npm -v
+	$ npm -v
 
 Step 4 – Run npm init command to create package.json file (note : this command will create package.json file)
 	
-	sudo npm init	
+	$ sudo npm init	
 	
 Step 5 – Install all the required modules 
-	(note : in case package-lock.json file is not create ,these command will create package-lock.json file)
+	(note : in case package-lock.json file is not create,these command will create package-lock.json file)
 	
-	sudo npm install body-parser
-	sudo npm install express
-	sudo npm install path
-	sudo npm install mysql
-	sudo npm install web-push
-	sudo npm install node-schedule
-	sudo npm install twilio
-	sudo npm install mandrill-api
-	sudo npm install @sendgrid/mail
-
+	$ sudo npm install body-parser
+	$ sudo npm install express
+	$ sudo npm install path
+	$ sudo npm install mysql
+	$ sudo npm install web-push
+	$ sudo npm install node-schedule
+	$ sudo npm install twilio
+	$ sudo npm install mandrill-api
+	$ sudo npm install @sendgrid/mail
+	
+Step 6 – Import database 
 -- ---------------------------------------------------------------------------------------------------
 
 Configration :
@@ -52,30 +56,32 @@ Step 1. Configure your DATABASE connection
 
 	- mention your host, username , password and database name in db_credentials.js.
 
-2. Configure your MANDRILL connection
+Step 2. Configure your MANDRILL connection to use mandrill
 
 	- mention your api key in mandrill_credentials file
 
-3. Configure your TWILIO connection 
+Step 3. Configure your TWILIO connection to use twilio
 
 	- mention  your accountSid and authToken in twilio_credentials file
 
-4. Configure your WEBPUSH connection
+Step 4. Configure your WEBPUSH connection to use service worker 
 	
-	- Generate publicVapidKey and privateVapidKey from terminal 
+	- Generate publicVapidKey and privateVapidKey from terminal using below command :
+
+		$ ./node_modules/.bin/web-push generate-vapid-keys
+
+	(Note: To generate publicVapidKey and privateVapidKey make sure you installed web-push module then run below command : ./node_modules/.bin/web-push generate-vapid-keys)
+
 	- keep public and private key in webpush_credentials file
 	- give public key in public/main.js file
 
-(Note: To generate publicVapidKey and privateVapidKey make sure you installed web-push module then run below command :
-	
-	./node_modules/.bin/web-push generate-vapid-keys
-)
+(Note: To send notifications using webpush to need to setup service worker,go though service worker document to setup service worker.)
 
-5. Set DEFAULT notification 
+Step 5. Set DEFAULT notification 
 
 	- Mention default category, type and subtype
 
-6. Configure your SENDGRID connection
+Step 6. Configure your SENDGRID connection
 
 	- mention your api key in sendgrid_credentials file
 
@@ -85,6 +91,7 @@ Once you finish above mentioned step , you are ready to start your project .Run 
 
 	sudo npm start
 
+(Note : Make sure your server is running to get api response.In case you do changes in any of the files make sure you restart server by again running above command )
 -- ---------------------------------------------------------------------------------------------------
 
 Currently this project is running on 7000 port number but you can change and set any port number for your project.

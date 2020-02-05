@@ -2,7 +2,17 @@
  *-- API DOCUMENT
  *-- ---------------------------------------------------------------------------------------------------*/
 
-1.SEND NOTIFICATION 
+1.WEBPUSH API
+
+URL : BASE_URL:7000/webpush
+METHOD : POST
+PARAMETERS :	
+	- subscription			- <REQUIRED>
+	- user_id				- <REQUIRED>
+
+-- ------------------------------------------------------------------------------------------------------
+
+2.SEND NOTIFICATION 
 
 URL : BASE_URL:7000/notification/send
 METHOD : POST

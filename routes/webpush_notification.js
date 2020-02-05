@@ -23,7 +23,12 @@ module.exports = (express, connection) => {
 	 *-- Function : Node post api - to subscribe users for push notification
 	 *-->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
 	router.post('/', (req, res) => {
-		const subscription = req.body;
+		
+		console.log("req.body-----------"+req.body);
+
+		const subscription = req.body.subscription === '' || req.body.subscription === undefined ? '' : req.body.subscription;
+		const user_id = req.body.user_id === '' || req.body.user_id === undefined ? 0 : req.body.user_id;
+		
 		var json_subscription = JSON.stringify(subscription);
 		let selectSql = 'SELECT * FROM `subscription` WHERE `subscription_data`=?';
 		let params = [json_subscription];
@@ -33,9 +38,9 @@ module.exports = (express, connection) => {
 				throw err;
 			}
 			if (rows.length == 0) {
-				// var unique_string = 'NE_'+ Date.now();
-				let sql = 'INSERT INTO `subscription`(`subscription_data`) VALUES (?)';
-				let insert_params = [json_subscription];
+				console.log('insert value');			
+				let sql = 'INSERT INTO `subscription`(`user_id`,`subscription_data`) VALUES (?,?)';
+				let insert_params = [user_id,json_subscription];
 				connection.query(sql, insert_params, (err, rows, fields) => {
 					if (err) {
 						throw err;
@@ -45,38 +50,60 @@ module.exports = (express, connection) => {
 						const payload = JSON.stringify({
 							title: "Notification engine",
 							options: {
-								body: 'Thank you for subscribing...',
-								icon: 'http://localhost/notification_engine/images/icon.png',
+								body: 'Thank you for subscribing.',
+								icon: '../images/icon.png',
 								badge: '../images/badge.png'
 							}
 						});
 
-						//pass object into sendNotification
-						webpush.sendNotification(subscription, payload)
-							.then(function (response) {
-								console.log('api response--------' + JSON.stringify(response));
-							})
-							.catch(err => console.error(err));
+						if(!!subscription){
+							//pass object into sendNotification
+							webpush.sendNotification(subscription, payload)
+								.then(function (response) {
+									console.log('api response--------' + JSON.stringify(response));
+								})
+								.catch(err => console.error(err));
+						}else{
+							console.log("empty subscription string");
+						}
+						
 					}
 
 				});
 			} else {
-				res.status(200).json({});
-				//create payload
-				const payload = JSON.stringify({
-					title: "Notification engine",
-					options: {
-						body: 'You are already subscribed with us...',
-						icon: 'http://localhost/notification_engine/images/icon.png',
-						badge: 'images/badge.png'
+				// update subscription 
+				console.log('update value');
+				let sql = 'UPDATE `subscription` SET `subscription_data`=? WHERE `user_id`=?';
+				let update_params = [json_subscription,user_id];
+				connection.query(sql, update_params, (err, rows, fields) => {
+					if (err) {
+						throw err;
+					} else {
+						res.status(200).json({});
+						//create payload
+						const payload = JSON.stringify({
+							title: "Notification engine",
+							options: {
+								body: 'Your subscription is updated.',
+								icon: '../images/icon.png',
+								badge: '../images/badge.png'
+							}
+						});
+						if(!!subscription){
+							//pass object into sendNotification
+							webpush.sendNotification(subscription, payload)
+								.then(function (response) {
+									console.log('api response--------' + JSON.stringify(response));
+								})
+								.catch(err => console.error(err));
+						}else{
+							console.log("empty subscription string");
+						}
+						
 					}
+
 				});
-				//pass object into sendNotification
-				webpush.sendNotification(subscription, payload)
-					.then(function (response) {
-						console.log('api response--------' + JSON.stringify(response));
-					})
-					.catch(err => console.error(err));
+
 			}
 		});
 	});

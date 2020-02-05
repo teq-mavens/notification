@@ -1,0 +1,16 @@
+/*--------------------------------------------------
+ *-- Webpush subscription document 
+ *------------------------------------------------*/
+
+ In order to send webpush notification you need to subscribe with service worker, Follow below steps to integrate service worker in your project.
+
+ Step 1 - copy main.js and sw.js file from public folder and keep it with your other js files (example: webbroot in case of cakephp).
+
+ Step 2 - Include main.js file in your landing page or on any page in your project from where user can interact with service worker.
+
+ Step 3 - Open main.js file and change sw_url with your COMPLETE_PATH_OF_SW.js_FILE and api_url with your COMPLETE_PATH_OF_CONTROLLER_FUNCTION_WHICH_CALL_WEBPUSH_API.
+
+ Step 4 - create a function in your controller to call webpush api
+
+ Step 5 - Once your function is ready open your page in  browser and check if you are getting an option to accept or decline notifications.
+ (Note : if you accept you are subscribed to get notification in future and if you decline  you are not subscribed hence you will not get any notification in future)

@@ -321,7 +321,7 @@ module.exports = (express, connection) => {
 												reference_key: web_unique_string
 											});
 											// get user subsciption endpoint 
-											let selectSql = 'SELECT * FROM `subscription` WHERE `id`=?';
+											let selectSql = 'SELECT * FROM `subscription` WHERE `user_id`=?';
 											let selectparam = [user_id];
 											// select query 
 											connection.query(selectSql, selectparam, (err, rows, fields) => {
@@ -400,7 +400,7 @@ module.exports = (express, connection) => {
 												reference_key: adv_web_unique_string
 											});
 											// get user subsciption endpoint 
-											let selectSql = 'SELECT * FROM `subscription` WHERE `id`=?';
+											let selectSql = 'SELECT * FROM `subscription` WHERE `user_id`=?';
 											let selectparam = [user_id];
 											// select query 
 											connection.query(selectSql, selectparam, (err, rows, fields) => {
@@ -778,7 +778,7 @@ module.exports = (express, connection) => {
 												reference_key: skd_web_unique_string
 											});
 											// get user subsciption endpoint 
-											let selectSql = 'SELECT * FROM `subscription` WHERE `id`=?';
+											let selectSql = 'SELECT * FROM `subscription` WHERE `user_id`=?';
 											let selectparam = [user_id];
 											// select query 
 											connection.query(selectSql, selectparam, (err, rows, fields) => {
@@ -870,7 +870,7 @@ module.exports = (express, connection) => {
 												reference_key: skd_adv_web_unique_string
 											});
 											// get user subsciption endpoint 
-											let selectSql = 'SELECT * FROM `subscription` WHERE `id`=?';
+											let selectSql = 'SELECT * FROM `subscription` WHERE `user_id`=?';
 											let selectparam = [user_id];
 											// select query 
 											connection.query(selectSql, selectparam, (err, rows, fields) => {

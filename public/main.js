@@ -22,6 +22,8 @@
 'use strict';
 
 const applicationServerPublicKey = '<YOUR_PUBLIC_VAPID_KEY>';
+const sw_url = '<COMPLETE_PATH_OF_SW.js_FILE>';
+const api_url = '<COMPLETE_PATH_OF_CONTROLLER_FUNCTION_WHICH_CALL_WEBPUSH_API>';
 
 let isSubscribed = false;
 let isSubscribedDelay = false;
@@ -51,7 +53,7 @@ $(document).ready(function () {
 	if ('serviceWorker' in navigator && 'PushManager' in window) {
 		//if(process.env.NODE_ENV === 'production'){
 		console.log('Service Worker and Push is supported');
-		navigator.serviceWorker.register("/sw.js")
+		navigator.serviceWorker.register(sw_url)
 			.then(function (swReg) {
 
 				console.log('Service Worker is registered', swReg);
@@ -104,8 +106,8 @@ function subscribeUser() {
 			// do your stuff here
 			updateSubscriptionOnServer(subscription);
 			//send push notification
-			fetch('/webpush', {
-				method: 'POST',
+			fetch(api_url, {
+				method: 'POST',				
 				body: JSON.stringify(subscription),
 				headers: {
 					'content-type': 'application/json'

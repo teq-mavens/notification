@@ -58,6 +58,7 @@ CREATE TABLE `push_logs` (
 
 CREATE TABLE `subscription` (
   `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
   `subscription_data` text NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
