@@ -91,7 +91,7 @@ Once you finish above mentioned step , you are ready to start your project .Run 
 
 	sudo npm start
 
-(Note : Make sure your server is running to get api response.In case you do changes in any of the files make sure you restart server by again running above command )
+(Note : Make sure your server is running to get api response.In case you do changes in any of the files make sure you restart server by again running above command or set your server on forever mode by running forever command)
 -- ---------------------------------------------------------------------------------------------------
 
 Currently this project is running on 7000 port number but you can change and set any port number for your project.
