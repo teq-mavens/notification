@@ -101,5 +101,5 @@ URL : BASE_URL:<YOUR_PORT_NUMBER>/notification/send
 
 -- ---------------------------------------------------------------------------------------------------
 
-
+Once you finish setup create function to make api calls in your project (go though api document).  
 
