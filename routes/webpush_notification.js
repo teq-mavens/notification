@@ -79,27 +79,7 @@ module.exports = (express, connection) => {
 					if (err) {
 						throw err;
 					} else {
-						res.status(200).json({});
-						//create payload
-						const payload = JSON.stringify({
-							title: "Notification engine",
-							options: {
-								body: 'Your subscription is updated.',
-								icon: '../images/icon.png',
-								badge: '../images/badge.png'
-							}
-						});
-						if(!!subscription){
-							//pass object into sendNotification
-							webpush.sendNotification(subscription, payload)
-								.then(function (response) {
-									console.log('api response--------' + JSON.stringify(response));
-								})
-								.catch(err => console.error(err));
-						}else{
-							console.log("empty subscription string");
-						}
-						
+						res.status(200).json({});						
 					}
 
 				});
