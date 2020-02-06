@@ -54,7 +54,7 @@ MANDRILL BODY (WITH TEMPLATE) PARAMETERS:
 - to_email		(REQUIRED)	-	"<Email>"
 - to_name					-	"<String>"
 
-- schedule_time (REQUIRED) (* IN CASE OF SCHEDULE CATEGORY )
+- schedule_time (REQUIRED) (* IN CASE OF SCHEDULE CATEGORY ) - (* NOTE - PASS SCHEDULE TIME ACCORDING TO NODE-SCHEDULE FORMAT)
 ============================================
 ============================================
 SENDGRID BODY PARAMETERS:
@@ -64,7 +64,7 @@ SENDGRID BODY PARAMETERS:
 - from_email		(REQUIRED)	-	"<email>"
 - to_email			(REQUIRED)	-	"<email>"
 
-- schedule_time (REQUIRED) (* IN CASE OF SCHEDULE CATEGORY )
+- schedule_time (REQUIRED) (* IN CASE OF SCHEDULE CATEGORY ) - (* NOTE - PASS SCHEDULE TIME ACCORDING TO NODE-SCHEDULE FORMAT)
 ===========================================
 TWILIO BODY PARAMETERS:
 - to_country_code		(REQUIRED)	-	"<integer>"
@@ -80,7 +80,7 @@ BASIC WEBPUSH BODY PARAMETERS:
 - html_body			(REQUIRED)	-	"<String>"
 - user_id			(REQUIRED)	-	"<integer>"
 
-- schedule_time (REQUIRED) (* IN CASE OF SCHEDULE CATEGORY )
+- schedule_time (REQUIRED) (* IN CASE OF SCHEDULE CATEGORY ) - (* NOTE - PASS SCHEDULE TIME ACCORDING TO NODE-SCHEDULE FORMAT)
 ===========================================
 ADVANCE WEBPUSH BODY PARAMETERS:
 - html_title		(REQUIRED)	-	"<String>"
@@ -94,7 +94,7 @@ ADVANCE WEBPUSH BODY PARAMETERS:
 - dir							- 	"<String of 'auto' | 'ltr' | 'rtl'>"	
 - actions						- 	"<Array of Strings>"
 
-- schedule_time (REQUIRED) (* IN CASE OF SCHEDULE CATEGORY )
+- schedule_time (REQUIRED) (* IN CASE OF SCHEDULE CATEGORY ) - (* NOTE - PASS SCHEDULE TIME ACCORDING TO NODE-SCHEDULE FORMAT)
 -- --------------------------------------------------------------------------------------------------------
 
 (ex:	   
