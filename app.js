@@ -42,10 +42,9 @@ var pushRouter = require('./routes/push_notification')(express, connection);
 app.use('/webpush', webpushRouter);
 app.use('/notification', pushRouter);
 // non api route for our views
-app.get('/', (req, res) => {
-	//res.render('index');
+app.get('/', (req, res) => {	
 	console.log("HELLO EVERYONE");
-	res.sendFile(__dirname + "/" + "public/index.html");
+	//res.sendFile(__dirname + "/" + "public/index.html");
 });
 // Better way to disable x-powered-by
 app.disable('x-powered-by');
