@@ -73,7 +73,7 @@ $(document).ready(function () {
 function initializeUI() {
 	// trigger push notification on button click
 	if (isSubscribed) {
-		unsubscribeUser();
+		//unsubscribeUser();
 	} else {
 		subscribeUser();
 	}
@@ -123,22 +123,22 @@ function subscribeUser() {
 /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
  *-- UNsubscribe Users
  *>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>*/
-function unsubscribeUser() {
-	swRegistration.pushManager.getSubscription()
-		.then(function (subscription) {
-			if (subscription) {
-				return subscription.unsubscribe();
-			}
-		})
-		.catch(function (error) {
-			console.log('Error unsubscribing', error);
-		})
-		.then(function () {
-			updateSubscriptionOnServer(null);
-			console.log('User is unsubscribed.');
-			isSubscribed = false;
-		});
-}
+// function unsubscribeUser() {
+// 	swRegistration.pushManager.getSubscription()
+// 		.then(function (subscription) {
+// 			if (subscription) {
+// 				return subscription.unsubscribe();
+// 			}
+// 		})
+// 		.catch(function (error) {
+// 			console.log('Error unsubscribing', error);
+// 		})
+// 		.then(function () {
+// 			updateSubscriptionOnServer(null);
+// 			console.log('User is unsubscribed.');
+// 			isSubscribed = false;
+// 		});
+// }
 
 /*>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
  *-- function to send your subscription data to a backend
