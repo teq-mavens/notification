@@ -7,6 +7,7 @@ var app = express();
 var path = require('path');
 var bodyParser = require('body-parser');
 var mysql = require('mysql');
+var cors = require('cors');
 
 var credentials;
 try {
@@ -29,7 +30,8 @@ app.use(bodyParser.json());
 
 // instruct express to server up static assets
 app.use(express.static('public'));
-
+// cross-origin resource sharing
+app.use(cors());
 // Support for Crossdomain JSONP
 app.set('jsonp callback name', 'callback');
 
