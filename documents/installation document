@@ -41,6 +41,7 @@ Step 5 – Install all the required modules
 	$ sudo npm install express
 	$ sudo npm install path
 	$ sudo npm install mysql
+	$ sudo npm install cors
 	$ sudo npm install web-push
 	$ sudo npm install node-schedule
 	$ sudo npm install twilio
